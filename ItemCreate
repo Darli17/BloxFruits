@@ -1,0 +1,39 @@
+-- blox creatin script
+
+local plr = game.Players.LocalPlayer
+local char = plr.Character
+local playergui = plr.PlayerGui
+
+local main = playergui:WaitForChild("Main")
+local inventory = main.InventoryContainer
+local inventoryscroll = main.InventoryContainer.Right.Content.ScrollingFrame
+local frame = inventoryscroll.Frame
+local exampleFruit = inventory.Right.Content.ScrollingFrame.Frame["1"]
+local exampleFruitClone = exampleFruit:Clone()
+
+-- script
+
+--[[
+local Common = 218, 675
+local Uncommon = 0, 675
+local Rare = 654, 225
+local Legendary = 436, 225
+local Mythic = 218, 0
+--]]
+
+exampleFruitClone.Parent = frame
+exampleFruitClone.Name = "Custom"
+
+local Name = "sigma"
+local Type = "abayunda"
+local Rarity = 218, 0
+local Icon = "http://www.roblox.com/asset/?id=14855464199"
+
+exampleFruitClone.Filled.ItemInformation.ItemLine1.Text = Type
+exampleFruitClone.Filled.ItemInformation.ItemLine1.TextLabel.Text = Type
+exampleFruitClone.Filled.ItemInformation.ItemName.Text = Name
+exampleFruitClone.Filled.ItemInformation.ItemName.TextLabel.Text = Name
+exampleFruitClone.Filled.Icon.Image = Icon
+exampleFruitClone.Filled.IconOutline:Destroy()
+
+exampleFruitClone.Filled.Background.ImageRectOffset = "218, 0"

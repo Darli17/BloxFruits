@@ -1,4 +1,4 @@
-
+--[[
        local player = game.Players.LocalPlayer
 local gui = player:WaitForChild("PlayerGui")
     :WaitForChild("Main")
@@ -123,4 +123,4 @@ showText(script_enabled, 3)
 onSwitchClick()
 switch.Activated:Connect(onSwitchClick)
 
-
+--]]

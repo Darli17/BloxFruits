@@ -14,7 +14,7 @@ local description = "ДА ХУЙ ЕГО ЧТО ОНО ДЕЛАЕТ САМ ИЩИ
 local on = "ГОВНО ПИДИДИ (ВКЛ)"
 local off = "ГОВНО ПИДИДИ (ВЫКЛ)"
 local location = "ОЧЕРЕДНАЯ ПАРАША ЗАМЕЧЕНА: "
-local magnitude = "ГОВНА ОСТАЛОСЬ."
+local magnitude = "ГОВНА ОСТАЛОСЬ ЕБАНЬКО БЫСТРЕЕ."
 local collected = "ЗАСКАМИЛИ БОМЖА."
 
 -- if executed twice or more

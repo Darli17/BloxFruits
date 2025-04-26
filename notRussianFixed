@@ -7,15 +7,15 @@ local codes_button = gui:WaitForChild("Code")
 local settings_button = gui:WaitForChild("Settings")
 local dmg_counter_button = settings_button:WaitForChild("Buttons")
     :WaitForChild("DmgCounterButton")
-local script_enabled = "Скрипт включен успешно."
-local notifier_enabled = "Уведомлятель включен успешно."
-local notifier_disabled = "Уведомлятель выключен успешно."
-local description = "Показывает локацию заспавненого фрукта."
-local on = "Уведомлятель (ВКЛ)"
-local off = "Уведомлятель (ВЫКЛ)"
-local location = "ФРУКТ ЗАМЕЧЕН: "
-local magnitude = "м осталось."
-local collected = "Фрукт задеспавнился/собран."
+local script_enabled = "СКРИПТ ГОВНА ВКЛЮЧЕН УСПЕШНО ЗАДАЛБАЛИ."
+local notifier_enabled = "ИЩИ САМ ФРУКТЫ ВКЛЮЧЕНО БЛЯ."
+local notifier_disabled = "ИДИ ТОГДА НАХУЙ."
+local description = "ДА ХУЙ ЕГО ЧТО ОНО ДЕЛАЕТ САМ ИЩИ В ИНТЕРНЕТЕ ЗАЕБАЛ."
+local on = "ГОВНО ПИДИДИ (ВКЛ)"
+local off = "ГОВНО ПИДИДИ (ВЫКЛ)"
+local location = "ОЧЕРЕДНАЯ ПАРАША ЗАМЕЧЕНА: "
+local magnitude = "ГОВНА ОСТАЛОСЬ."
+local collected = "ЗАСКАМИЛИ БОМЖА."
 
 -- if executed twice or more
 if codes_button:FindFirstChild("NotifierLed") then

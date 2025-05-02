@@ -30,44 +30,111 @@ local Window = Rayfield:CreateWindow({
       FileName = "BHV1KEY", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
       SaveKey = false, -- The user's key will be saved, but if you change the key, they will be unable to use your script
       GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
-      Key = {"SEMENKEYFOREVER"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+      Key = {"x"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
    }
 })
 
 local Tab = Window:CreateTab("Player", 16860455571)
-local Tab2 = Window:CreateTab("Farm", 13842629142)
-local Tab3 = Window:CreateTab("Settings", 100360583950712)
-local Button = Tab:CreateButton({
-   Name = "Universal WalkSpeed",
-   Callback = function()
-   		getgenv().TpWalking = true
-getgenv().Speed = 10
+local Tab2 = Window:CreateTab("Sniper", 7634928982)
+local Tab3 = Window:CreateTab("Farm", 13842629142)
+local Tab4 = Window:CreateTab("Hubs", 12837761435)
+local Tab5 = Window:CreateTab("Settings", 100360583950712)
 
-local speaker = game:GetService("Players").LocalPlayer
-local chr = speaker.Character
-local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
-local hb = game:GetService("RunService").Heartbeat
-while getgenv().TpWalking and chr and hum and hum.Parent do
-    local delta = hb:Wait()
-    if hum.MoveDirection.Magnitude > 0 then
-        chr:TranslateBy(hum.MoveDirection * tonumber(getgenv().Speed) * delta * 10)
-    else
-        chr:TranslateBy(hum.MoveDirection * delta * 10)
-    end
-end
-   end,
+local plrN = game.Players.LocalPlayer.Name
+
+Rayfield:Notify({
+   Title = "Buddha Hub",
+   Content = "Welcome to Buddha Hub! This hub in beta, and can have some bugs, Goodluck using this script, ".. plrN,
+   Duration = 6,
+   Image = 119436266798050,
 })
-local Slider1 = Tab:CreateSlider({
-   Name = "JumpPower",
-   Range = {3, 1500},
-   Increment = 10,
+Rayfield:Notify({
+   Title = "Buddha Hub",
+   Content = "And you can hide Cheat on key 'K' or close this Cheat in Settings menu!",
+   Duration = 6,
+   Image = 119436266798050,
+})
+
+local Section = Tab:CreateSection("Player")
+
+local Slider = Tab:CreateSlider({
+   Name = "WalkSpeed [ C A N B A N ]",
+   Range = {1, 100},
+   Increment = 1,
    Suffix = "",
-   CurrentValue = game.Players.LocalPlayer.Character.Humanoid.JumpPower,
-   Flag = "Slider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-   Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+   CurrentValue = 1,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(xxx)
+		local name = game.Players.LocalPlayer.Name
+		workspace.Characters[name]:SetAttribute("SpeedMultiplier", xxx)
    end,
 })
+
+local Slider = Tab:CreateSlider({
+   Name = "JumpPower",
+   Range = {50, 5000},
+   Increment = 1,
+   Suffix = "",
+   CurrentValue = 50,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(xxx)
+		local name = game.Players.LocalPlayer.Name
+		workspace.Characters[name].Humanoid.JumpPower = xxx
+   end,
+})
+
+local Section = Tab:CreateSection("Modifications")
+
+local Slider = Tab:CreateSlider({
+   Name = "Dash Length [ C A N B A N ]",
+   Range = {1, 1000},
+   Increment = 1,
+   Suffix = "",
+   CurrentValue = 1,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(xxx)
+		local name = game.Players.LocalPlayer.Name
+		workspace.Characters[name]:SetAttribute("DashLength", xxx)
+   end,
+})
+
+local Slider = Tab:CreateSlider({
+   Name = "Dash Speed [ C A N B A N ]",
+   Range = {1, 1000},
+   Increment = 1,
+   Suffix = "",
+   CurrentValue = 1,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(xxx)
+		local name = game.Players.LocalPlayer.Name
+		workspace.Characters[name]:SetAttribute("DashSpeed", xxx)
+   end,
+})
+
+local Button = Tab:CreateButton({
+   Name = "Infinite Enegry",
+   Callback = function()
+		while true do
+			wait(0.)
+			local name = game.Players.LocalPlayer.Name
+			workspace.Characters[name].Energy.Value = "99999999999999"
+		end
+   end,
+})
+
+local Input = Tab:CreateInput({
+   Name = "Stun Number",
+   CurrentValue = "",
+   PlaceholderText = "At 1 To 10",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+		local name = game.Players.LocalPlayer.Name
+		workspace.Characters[name].Stun.Value = Text
+   end,
+})
+
+local Section = Tab:CreateSection("Other")
 
 local Input = Tab:CreateInput({
    Name = "Notification",
@@ -78,7 +145,7 @@ local Input = Tab:CreateInput({
    Callback = function(Text)
    		local player = game.Players.LocalPlayer
 		local gui = player:WaitForChild("PlayerGui"):WaitForChild("Main")
-		local label = gui:WaitForChild("[OLD]Radar")
+		local label = gui:WaitForChild("PvpDisabled")
 		label.Text = Text
     	label.Visible = true
 		local time = 4
@@ -94,21 +161,27 @@ local Button = Tab:CreateButton({
    end,
 })
 
-
-
-local Button2 = Tab2:CreateButton({
-   Name = "Devil Fruit Notificator",
+local Button2 = Tab4:CreateButton({
+   Name = "Annie Hub",
    Callback = function()
-   		loadstring(game:HttpGet("https://github.com/euyogi/Prototipo-YogiNotificadorFruta/raw/main/YogiNotificadorFruta.lua"))() 
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/1st-Mars/Annie/main/1st.lua'))()
    end,
 })
-local Button2 = Tab2:CreateButton({
+local Button2 = Tab4:CreateButton({
+   Name = "Speed Hub X",
+   Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+   end,
+})
+
+
+local Button2 = Tab3:CreateButton({
    Name = "Devil Fruit Notificator (РУССКИЙ)",
    Callback = function()
    		local player = game.Players.LocalPlayer
 local gui = player:WaitForChild("PlayerGui")
     :WaitForChild("Main")
-local label = gui:WaitForChild("[OLD]Radar")
+local label = gui:WaitForChild("PvpDisabled")
 local codes_button = gui:WaitForChild("Code")
 local settings_button = gui:WaitForChild("Settings")
 local dmg_counter_button = settings_button:WaitForChild("Buttons")
@@ -233,14 +306,14 @@ switch.Activated:Connect(onSwitchClick)
    end,
 })
 
-local Button2 = Tab3:CreateButton({
+local Button2 = Tab5:CreateButton({
    Name = "Unload",
    Callback = function()
    		Rayfield:Destroy()
    end,
 })
-local ColorPicker = Tab3:CreateColorPicker({
-    Name = "Color Picker",
+local ColorPicker = Tab5:CreateColorPicker({
+    Name = "Menu Color",
     Color = Color3.fromRGB(255,255,255),
     Flag = "ColorPicker1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
     Callback = function(Value)

@@ -153,6 +153,27 @@ local Input = Tab:CreateInput({
     	label.Visible = false
    end,
 })
+local Input = Tab:CreateInput({
+   Name = "Vision Radius [NEED INSPECT]",
+   CurrentValue = "",
+   PlaceholderText = "At 0 to inf",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+		game.Players.LocalPlayer.VisionRadius.Value = Text
+   end,
+})
+
+local yourbusocolor = game.Players.LocalPlayer.BusoColor.Value
+
+local ColorPicker = Tab:CreateColorPicker({
+    Name = "Aura Color [Buso Color]",
+    Color = yourbusocolor,
+    Flag = "ColorPicker1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+    Callback = function(ColorPickerColor)
+		game.Players.LocalPlayer.BusoColor.Value = ColorPickerColor
+    end
+})
 
 local Button = Tab:CreateButton({
    Name = "Fly Gui",
@@ -160,6 +181,57 @@ local Button = Tab:CreateButton({
    		loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
    end,
 })
+
+local Section = Tab2:CreateSection("Player Sniper")
+
+local Button = Tab2:CreateButton({
+   Name = "Player Animation Spoofer",
+   Callback = function()
+		loadstring(game:HttpGet("https://github.com/ltseverydayyou/Nameless-Admin/blob/main/Animation%20Spoofer?raw=true"))()
+   end,
+})
+local Input = Tab2:CreateInput({
+   Name = "Animation ID Runner",
+   CurrentValue = "",
+   PlaceholderText = "ID Here",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(ID)
+		local Name_plr = game.Players.LocalPlayer.Name
+		workspace.Characters[Name_plr].Humanoid:LoadAnimation(ID):Play()
+   end,
+})
+
+local Section = Tab2:CreateSection("Players Sniper")
+local Label = Tab2:CreateLabel("NOTE: If an error pops up, it means the player you entered does not hold anything.", 6543653319,Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+local Input = Tab2:CreateInput({
+   Name = "Player Username",
+   CurrentValue = "",
+   PlaceholderText = "Name Here",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+   		local name = workspace.Characters[Text].Name
+		local namelocal = workspace.Characters[Text]
+		local nametool = namelocal:FindFirstChildOfClass("Tool")
+
+		local Paragraph = Tab2:CreateParagraph({Title = "Selected Player: " ..name, Content = "Display Name: " ..namelocal.Humanoid.DisplayName})
+
+		local Label = Tab2:CreateLabel("Use Fruit: " ..game.Players[name].Data.DevilFruit.Value, 16313499730,Color3.fromRGB(55, 40, 30), true) -- Title, Icon, Color, IgnoreTheme
+		local Label = Tab2:CreateLabel("Beli: " ..game.Players[name].Data.Beli.Value, 131666565918418,Color3.fromRGB(55, 40, 30), true) -- Title, Icon, Color, IgnoreTheme
+		local Label = Tab2:CreateLabel("Fragments: " ..game.Players[name].Data.Fragments.Value, 15742949093,Color3.fromRGB(55, 40, 30), true) -- Title, Icon, Color, IgnoreTheme
+		local Label = Tab2:CreateLabel("Level: " ..game.Players[name].Data.Level.Value, 11823071930,Color3.fromRGB(55, 40, 30), true) -- Title, Icon, Color, IgnoreTheme
+
+		local Divider = Tab2:CreateDivider()
+
+		local Label = Tab2:CreateLabel("Health: " ..workspace.Characters[name].Humanoid.Health, 6680686532,Color3.fromRGB(0, 128, 0), true) -- Title, Icon, Color, IgnoreTheme
+		local Label = Tab2:CreateLabel("Energy: " ..workspace.Characters[name].Energy.Value, 17695249827,Color3.fromRGB(31, 174, 233), true) -- Title, Icon, Color, IgnoreTheme
+
+		local Label = Tab2:CreateLabel("Holds: " ..nametool.Name, 16767204649,Color3.fromRGB(255, 255, 0), true) -- Title, Icon, Color, IgnoreTheme
+   end,
+})
+
+
 
 local Button2 = Tab4:CreateButton({
    Name = "Annie Hub",
@@ -171,6 +243,17 @@ local Button2 = Tab4:CreateButton({
    Name = "Speed Hub X",
    Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+   end,
+})
+
+local Section = Tab3:CreateSection("Devil Fruits")
+
+local Button2 = Tab3:CreateButton({
+   Name = "Fruit TP [ C A N B A N ]",
+   Callback = function()
+		local namefruit = workspace:FindFirstChildOfClass("Tool")
+		local name = game.Players.LocalPlayer.Name
+		workspace.Characters[name].HumanoidRootPart.CFrame = namefruit.Handle.CFrame
    end,
 })
 
@@ -312,12 +395,4 @@ local Button2 = Tab5:CreateButton({
    		Rayfield:Destroy()
    end,
 })
-local ColorPicker = Tab5:CreateColorPicker({
-    Name = "Menu Color",
-    Color = Color3.fromRGB(255,255,255),
-    Flag = "ColorPicker1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-        -- The function that takes place every time the color picker is moved/changed
-        -- The variable (Value) is a Color3fromRGB value based on which color is selected
-    end
-})
+

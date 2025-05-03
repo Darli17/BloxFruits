@@ -459,6 +459,17 @@ Callback = function()
 		workspace.Characters[name].HumanoidRootPart.Anchored = true
 	end,
 })
+local Button = Tab3:CreateButton({
+Name = "UNANCHOR AFTER FACTORY",
+Callback = function()
+		local name = game.Players.LocalPlayer.Name
+		workspace.Map.Dressrosa.SmileFactory.Door.CanCollide = false
+		workspace.Characters[name].HumanoidRootPart.CFrame = workspace.Map.Dressrosa.SmileFactory.Door.CFrame
+		workspace.Characters[name].HumanoidRootPart.Anchored = false
+		wait(3)
+		workspace.Map.Dressrosa.SmileFactory.Door.CanCollide = true
+	end,
+})
 
 local Button2 = Tab5:CreateButton({
    Name = "Unload",

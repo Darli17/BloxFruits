@@ -449,6 +449,16 @@ Callback = function()
 	end,
 })	
 
+local Section = Tab3:CreateSection("Structures Farm")
+
+local Button = Tab3:CreateButton({
+Name = "TP Into Factory",
+Callback = function()
+		local name = game.Players.LocalPlayer.Name
+		workspace.Characters[name].HumanoidRootPart.CFrame = workspace.Map.Dressrosa.SmileFactory.Core.Part.CFrame
+		workspace.Characters[name].HumanoidRootPart.Anchored = true
+	end,
+})
 
 local Button2 = Tab5:CreateButton({
    Name = "Unload",

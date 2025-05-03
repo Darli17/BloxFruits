@@ -37,7 +37,7 @@ local Window = Rayfield:CreateWindow({
 local Tab = Window:CreateTab("Player", 16860455571)
 local Tab2 = Window:CreateTab("Sniper", 7634928982)
 local Tab3 = Window:CreateTab("Farm", 13842629142)
-local Tab4 = Window:CreateTab("Hubs", 12837761435)
+local Tab4 = Window:CreateTab("Other", 12837761435)
 local Tab5 = Window:CreateTab("Settings", 100360583950712)
 
 local plrN = game.Players.LocalPlayer.Name
@@ -257,6 +257,21 @@ local Button2 = Tab3:CreateButton({
    end,
 })
 
+local Button2 = Tab3:CreateButton({
+   Name = "Fruit ESP",
+   Callback = function()
+   		local namefruit = workspace:FindFirstChildOfClass("Tool")
+		local name = game.Players.LocalPlayer.Name
+		local PartESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/RtxyDev/PartESP/main/Main.lua"))()
+		PartESP.AddESP(
+  			namefruit.Name,                -- Part Name
+  			namefruit.Handle,              -- Part Path
+ 			30,                          -- Text Size
+  			Color3.fromRGB(115, 62, 165) -- Text Color
+		)
+   end,
+})
+
 
 local Button2 = Tab3:CreateButton({
    Name = "Devil Fruit Notificator (РУССКИЙ)",
@@ -389,10 +404,55 @@ switch.Activated:Connect(onSwitchClick)
    end,
 })
 
+local Section = Tab3:CreateSection("Chests")
+
+local Button = Tab3:CreateButton({
+Name = "Silver Chest",
+Callback = function()
+	local plr = game.Players.LocalPlayer
+	local plrName = plr.Name
+	local char = workspace.Characters[plrName]
+
+	local root = char.HumanoidRootPart
+
+	local Chests = workspace.ChestModels
+
+	root.CFrame = workspace.ChestModels.SilverChest.RootPart.CFrame
+	end,
+})	
+local Button = Tab3:CreateButton({
+Name = "Gold Chest",
+Callback = function()
+	local plr = game.Players.LocalPlayer
+	local plrName = plr.Name
+	local char = workspace.Characters[plrName]
+
+	local root = char.HumanoidRootPart
+
+	local Chests = workspace.ChestModels
+
+	root.CFrame = workspace.ChestModels.GoldChest.RootPart.CFrame
+	end,
+})	
+local Button = Tab3:CreateButton({
+Name = "Diamond Chest",
+Callback = function()
+	local plr = game.Players.LocalPlayer
+	local plrName = plr.Name
+	local char = workspace.Characters[plrName]
+
+	local root = char.HumanoidRootPart
+
+	local Chests = workspace.ChestModels
+
+	root.CFrame = workspace.ChestModels.DiamondChest.RootPart.CFrame
+	end,
+})	
+
+
 local Button2 = Tab5:CreateButton({
    Name = "Unload",
    Callback = function()
    		Rayfield:Destroy()
    end,
 })
-

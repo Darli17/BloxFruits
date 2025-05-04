@@ -37,8 +37,8 @@ local Window = Rayfield:CreateWindow({
 local Tab = Window:CreateTab("Player", 16860455571)
 local Tab2 = Window:CreateTab("Sniper", 7634928982)
 local Tab3 = Window:CreateTab("Farm", 13842629142)
-local Tab4 = Window:CreateTab("Other", 12837761435)
-local Tab5 = Window:CreateTab("Settings", 100360583950712)
+local Tab4 = Window:CreateTab("Visual", 12837761435)
+local Tab5 = Window:CreateTab("Other", 100360583950712)
 
 local plrN = game.Players.LocalPlayer.Name
 
@@ -50,7 +50,7 @@ Rayfield:Notify({
 })
 Rayfield:Notify({
    Title = "Buddha Hub",
-   Content = "And you can hide Cheat on key 'K' or close this Cheat in Settings menu!",
+   Content = "And you can hide Cheat on key 'K' or close this Cheat in 'Other' tab!",
    Duration = 6,
    Image = 119436266798050,
 })
@@ -164,6 +164,10 @@ local Input = Tab:CreateInput({
    end,
 })
 
+local bso = Instance.new("Color3Value")
+bso.Name = "BusoColor"
+bso.Parent = game.Players.LocalPlayer
+
 local yourbusocolor = game.Players.LocalPlayer.BusoColor.Value
 
 local ColorPicker = Tab:CreateColorPicker({
@@ -175,12 +179,6 @@ local ColorPicker = Tab:CreateColorPicker({
     end
 })
 
-local Button = Tab:CreateButton({
-   Name = "Fly Gui",
-   Callback = function()
-   		loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
-   end,
-})
 
 local Section = Tab2:CreateSection("Player Sniper")
 
@@ -232,19 +230,37 @@ local Input = Tab2:CreateInput({
 })
 
 
+local Section = Tab5:CreateSection("Blox Fruits Scripts")
 
-local Button2 = Tab4:CreateButton({
+local Button2 = Tab5:CreateButton({
    Name = "Annie Hub",
    Callback = function()
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/1st-Mars/Annie/main/1st.lua'))()
    end,
 })
-local Button2 = Tab4:CreateButton({
+local Button2 = Tab5:CreateButton({
    Name = "Speed Hub X",
+   Callback = function()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+   end,
+})
+
+local Section = Tab5:CreateSection("Universal")
+
+local Button2 = Tab5:CreateButton({
+   Name = "Infinite Yield",
    Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
    end,
 })
+local Button = Tab5:CreateButton({
+   Name = "Fly Gui",
+   Callback = function()
+   		loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+   end,
+})
+
+local Section = Tab5:CreateSection("Settings")
 
 local Section = Tab3:CreateSection("Devil Fruits")
 
@@ -254,6 +270,14 @@ local Button2 = Tab3:CreateButton({
 		local namefruit = workspace:FindFirstChildOfClass("Tool")
 		local name = game.Players.LocalPlayer.Name
 		workspace.Characters[name].HumanoidRootPart.CFrame = namefruit.Handle.CFrame
+   end,
+})
+local Button2 = Tab3:CreateButton({
+   Name = "Fruit TP [ SPAWNED BY GAME ]",
+   Callback = function()
+		local namefruit = workspace.Fruit.Fruit.RootPart
+		local name = game.Players.LocalPlayer.Name
+		workspace.Characters[name].HumanoidRootPart.CFrame = namefruit.CFrame
    end,
 })
 
@@ -271,7 +295,104 @@ local Button2 = Tab3:CreateButton({
 		)
    end,
 })
+local Button2 = Tab3:CreateButton({
+   Name = "Fruit ESP [ SPAWNED BY GAME ]",
+   Callback = function()
+   		local fruit = workspace.Fruit.Fruit.RootPart
+		local PartESP = loadstring(game:HttpGet("https://raw.githubusercontent.com/RtxyDev/PartESP/main/Main.lua"))()
+		PartESP.AddESP(
+  			"Fruit",                -- Part Name
+  			fruit,              -- Part Path
+ 			30,                          -- Text Size
+  			Color3.fromRGB(115, 62, 165) -- Text Color
+		)
+   end,
+})
 
+local beliBack = Instance.new("IntValue")
+local fragBack = Instance.new("IntValue")
+local lvlBack = Instance.new("IntValue")
+local xpBack = Instance.new("IntValue")
+local pointsBack = Instance.new("IntValue")
+
+beliBack.Name = "BeliOriginal"
+fragBack.Name = "FragmentsOriginal"
+lvlBack.Name = "LevelOriginal"
+xpBack.Name = "ExpOriginal"
+pointsBack.Name = "PointsOriginal"
+
+beliBack.Value = game.Players.LocalPlayer.Data.Beli.Value
+fragBack.Value = game.Players.LocalPlayer.Data.Fragments.Value
+lvlBack.Value = game.Players.LocalPlayer.Data.Level.Value
+xpBack.Value = game.Players.LocalPlayer.Data.Exp.Value
+pointsBack.Value = game.Players.LocalPlayer.Data.Points.Value
+
+beliBack.Parent = game.Players.LocalPlayer.Data
+fragBack.Parent = game.Players.LocalPlayer.Data
+lvlBack.Parent = game.Players.LocalPlayer.Data
+xpBack.Parent = game.Players.LocalPlayer.Data
+pointsBack.Parent = game.Players.LocalPlayer.Data
+
+local Input = Tab4:CreateInput({
+   Name = "Beli",
+   CurrentValue = "",
+   PlaceholderText = "Value",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+		game.Players.LocalPlayer.Data.Beli.Value = Text
+   end,
+})
+local Input = Tab4:CreateInput({
+   Name = "Fragments",
+   CurrentValue = "",
+   PlaceholderText = "Value",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+		game.Players.LocalPlayer.Data.Fragments.Value = Text
+   end,
+})
+local Input = Tab4:CreateInput({
+   Name = "Level",
+   CurrentValue = "",
+   PlaceholderText = "Value",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+		game.Players.LocalPlayer.Data.Level.Value = Text
+   end,
+})
+local Input = Tab4:CreateInput({
+   Name = "EXP",
+   CurrentValue = "",
+   PlaceholderText = "Value",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+		game.Players.LocalPlayer.Data.Exp.Value = Text
+   end,
+})
+local Input = Tab4:CreateInput({
+   Name = "Points",
+   CurrentValue = "",
+   PlaceholderText = "Value",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+		game.Players.LocalPlayer.Data.Points.Value = Text
+   end,
+})
+local Button = Tab4:CreateButton({
+   Name = "Back to Original",
+   Callback = function()
+	game.Players.LocalPlayer.Data.Beli.Value = beliBack.Value
+	game.Players.LocalPlayer.Data.Fragments.Value = fragBack.Value
+	game.Players.LocalPlayer.Data.Level.Value = lvlBack.Value
+	game.Players.LocalPlayer.Data.Exp.Value = xpBack.Value
+	game.Players.LocalPlayer.Data.Points.Value = pointsBack.Value
+   end,
+})
 
 local Button2 = Tab3:CreateButton({
    Name = "Devil Fruit Notificator (РУССКИЙ)",
@@ -456,6 +577,7 @@ Name = "TP Into Factory",
 Callback = function()
 		local name = game.Players.LocalPlayer.Name
 		workspace.Characters[name].HumanoidRootPart.CFrame = workspace.Map.Dressrosa.SmileFactory.Core.Part.CFrame
+		workspace.Characters[name].HumanoidRootPart.CFrame = workspace.Characters[name].HumanoidRootPart.CFrame+Vector3.new(0, 13, 0)
 		workspace.Characters[name].HumanoidRootPart.Anchored = true
 	end,
 })

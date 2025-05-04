@@ -241,7 +241,7 @@ local Button2 = Tab5:CreateButton({
 local Button2 = Tab5:CreateButton({
    Name = "Speed Hub X",
    Callback = function()
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
    end,
 })
 
@@ -250,7 +250,7 @@ local Section = Tab5:CreateSection("Universal")
 local Button2 = Tab5:CreateButton({
    Name = "Infinite Yield",
    Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+   		loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
    end,
 })
 local Button = Tab5:CreateButton({

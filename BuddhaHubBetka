@@ -1,7 +1,7 @@
 local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Buddha Hub [BETA]",
+   Name = "Buddha Hub [RELEASE]",
    Icon = 119436266798050, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
    LoadingTitle = "Loading...",
    LoadingSubtitle = "by ValerikRob",
@@ -24,7 +24,7 @@ local Window = Rayfield:CreateWindow({
 
    KeySystem = true, -- Set this to true to use our key system
    KeySettings = {
-      Title = "Buddha Hub [BETA]",
+      Title = "Buddha Hub [RELEASE]",
       Subtitle = "Key System",
       Note = "We are giving away keys in our telegram channel!", -- Use this to tell the user how to get a key
       FileName = "BHV1KEY", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
@@ -164,20 +164,56 @@ local Input = Tab:CreateInput({
    end,
 })
 
-local bso = Instance.new("Color3Value")
-bso.Name = "BusoColor"
-bso.Parent = game.Players.LocalPlayer
+local Button = Tab:CreateButton({
+   Name = "Inject Buso",
+   Callback = function()
+	local yourbusocolor = game.Players.LocalPlayer.BusoColor.Value
 
-local yourbusocolor = game.Players.LocalPlayer.BusoColor.Value
+	local ColorPicker = Tab:CreateColorPicker({
+	    Name = "Aura Color",
+	    Color = yourbusocolor,
+	    Flag = "ColorPicker1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	    Callback = function(ColorPickerColor)
+			game.Players.LocalPlayer.BusoColor.Value = ColorPickerColor
+	    end
+	})
 
-local ColorPicker = Tab:CreateColorPicker({
-    Name = "Aura Color [Buso Color]",
-    Color = yourbusocolor,
-    Flag = "ColorPicker1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(ColorPickerColor)
-		game.Players.LocalPlayer.BusoColor.Value = ColorPickerColor
-    end
+	local Button = Tab:CreateButton({
+		Name = "Rainbow Aura",
+		Callback = function()
+   			while wait() do
+	game.Players.LocalPlayer.BusoColor.Value = Color3.new(255/255,0/255,0/255)
+	for i = 0,255,10 do
+		wait()
+		game.Players.LocalPlayer.BusoColor.Value = Color3.new(255/255,i/255,0/255)
+	end
+	for i = 255,0,-10 do
+		wait()
+		game.Players.LocalPlayer.BusoColor.Value = Color3.new(i/255,255/255,0/255)
+	end
+	for i = 0,255,10 do 
+		wait()
+		game.Players.LocalPlayer.BusoColor.Value = Color3.new(0/255,255/255,i/255)
+	end
+	for i = 255,0,-10 do 
+		wait()
+		game.Players.LocalPlayer.BusoColor.Value = Color3.new(0/255,i/255,255/255)
+	end
+	for i = 0,255,10 do
+		wait()
+		game.Players.LocalPlayer.BusoColor.Value = Color3.new(i/255,0/255,255/255)
+	end
+	for i = 255,0,-10 do
+		wait()
+		game.Players.LocalPlayer.BusoColor.Value = Color3.new(255/255,0/255,i/255)
+	end
+end
+   		end,
+	})
+   end,
 })
+
+
 
 
 local Section = Tab2:CreateSection("Player Sniper")

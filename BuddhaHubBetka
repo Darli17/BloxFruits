@@ -394,7 +394,7 @@ lvlBack.Parent = game.Players.LocalPlayer.Data
 xpBack.Parent = game.Players.LocalPlayer.Data
 pointsBack.Parent = game.Players.LocalPlayer.Data
 
-local Section55 = Tab4:CreateSection("Data Changes")
+local Section55 = Tab4:CreateSection("Data Visual")
 
 local Input = Tab4:CreateInput({
    Name = "Beli",
@@ -457,17 +457,133 @@ local Button = Tab4:CreateButton({
    end,
 })
 
-local Section44 = Tab4:CreateSection("UI Changes")
+local Section67 = Tab4:CreateSection("World Visual")
 
-local ColorPicker2 = Tab4:CreateColorPicker({
-    Name = "Health Fill",
-    Color = game.Players.LocalPlayer.PlayerGui.Main.HP.Fill.BackgroundColor3,
-    Flag = "ColorPicker2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
-    Callback = function(Value)
-		game.Players.LocalPlayer.PlayerGui.Main.HP.Fill.BackgroundColor3 = Color3.new(Value)
-    end
+local Button = Tab4:CreateButton({
+   Name = "Rainbow World",
+   Callback = function()
+   		while wait() do
+	game.Lighting.Ambient = Color3.new(255/255,0/255,0/255)
+	for i = 0,255,10 do
+		wait()
+		game.Lighting.Ambient = Color3.new(255/255,i/255,0/255)
+	end
+	for i = 255,0,-10 do
+		wait()
+		game.Lighting.Ambient = Color3.new(i/255,255/255,0/255)
+	end
+	for i = 0,255,10 do 
+		wait()
+		game.Lighting.Ambient = Color3.new(0/255,255/255,i/255)
+	end
+	for i = 255,0,-10 do 
+		wait()
+		game.Lighting.Ambient = Color3.new(0/255,i/255,255/255)
+	end
+	for i = 0,255,10 do
+		wait()
+		game.Lighting.Ambient = Color3.new(i/255,0/255,255/255)
+	end
+	for i = 255,0,-10 do
+		wait()
+		game.Lighting.Ambient = Color3.new(255/255,0/255,i/255)
+	end
+end
+   end,
 })
+local Button = Tab4:CreateButton({
+   Name = "Rainbow Tracer",
+   Callback = function()
+local UserInputService = game:GetService("UserInputService")  
+local Workspace = game:GetService("Workspace")  
+ 
+ 
+local function createTracer(startPosition, endPosition)  
+ 
+    local directionVector = (endPosition - startPosition) 
+    local distance = directionVector.Magnitude 
+ 
+    
+ 
 
+ 
+    local tracer = Instance.new("Part")  
+    tracer.Size = Vector3.new(0.2, 0.2, distance)  
+    tracer.Anchored = true  
+    tracer.CanCollide = false  
+    tracer.Material = Enum.Material.Neon  
+ 
+ 
+    tracer.CFrame = CFrame.lookAt( 
+        startPosition + directionVector/2, 
+        endPosition                        
+    ) 
+ 
+ 
+    tracer.Parent = Workspace  
+
+	for i = 0,255,10 do
+		wait()
+		tracer.Color = Color3.new(255/255,i/255,0/255)
+	end
+	for i = 255,0,-10 do
+		wait()
+		tracer.Color = Color3.new(i/255,255/255,0/255)
+	end
+	for i = 0,255,10 do 
+		wait()
+		tracer.Color = Color3.new(0/255,255/255,i/255)
+	end
+	for i = 255,0,-10 do 
+		wait()
+		tracer.Color = Color3.new(0/255,i/255,255/255)
+	end
+	for i = 0,255,10 do
+		wait()
+		tracer.Color = Color3.new(i/255,0/255,255/255)
+	end
+	for i = 255,0,-10 do
+		wait()
+		tracer.Color = Color3.new(255/255,0/255,i/255)
+	end
+
+    tracer.Transparency = 0.1 
+    wait(0.01) 
+    tracer.Transparency = 0.2 
+    wait(0.01) 
+    tracer.Transparency = 0.3 
+    wait(0.01) 
+    tracer.Transparency = 0.4 
+    wait(1) 
+    tracer.Transparency = 0.5 
+    wait(0.1) 
+    tracer.Transparency = 0.6 
+    wait(0.001) 
+    tracer.Transparency = 0.7 
+    wait(0.001) 
+    tracer.Transparency = 0.8 
+    wait(0.001) 
+    tracer.Transparency = 0.9 
+    wait(0.001) 
+    tracer.Transparency = 1 
+ 
+    game:GetService("Debris"):AddItem(tracer) 
+end  
+ 
+UserInputService.InputBegan:Connect(function(input, gameProcessed)  
+ 
+    if gameProcessed or input.UserInputType ~= Enum.UserInputType.MouseButton1 then return end 
+    local player = game.Players.LocalPlayer 
+    if not player.Character then return end 
+    local rootPart = player.Character:FindFirstChild("HumanoidRootPart") 
+    local mouse = player:GetMouse() 
+ 
+    if rootPart and mouse then  
+        createTracer(rootPart.Position, mouse.Hit.Position) 
+    end 
+end)
+   end,
+})
 
 local Button2 = Tab3:CreateButton({
    Name = "Devil Fruit Notificator (РУССКИЙ)",

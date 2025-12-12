@@ -5,8 +5,7 @@ local gui = player:WaitForChild("PlayerGui")
 local label = gui:WaitForChild("PvpDisabled")
 local codes_button = gui:WaitForChild("Code")
 local settings_button = gui:WaitForChild("Settings")
-local dmg_counter_button = settings_button:WaitForChild("Buttons")
-    :WaitForChild("DmgCounterButton")
+local dmg_counter_button = settings_button:WaitForChild("Buttons"):WaitForChild("Page1"):WaitForChild("DmgCounterButton")
 local script_enabled = "СКРИПТ ГОВНА ВКЛЮЧЕН УСПЕШНО ЗАЕбАЛи."
 local notifier_enabled = "ИЩИ САМ ФРУКТЫ БЛЯ."
 local notifier_disabled = "ИДИ ТОГДА НАХУЙ."

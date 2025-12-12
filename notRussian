@@ -4,8 +4,7 @@ local gui = player:WaitForChild("PlayerGui")
 local label = gui:WaitForChild("[OLD]Radar")
 local codes_button = gui:WaitForChild("Code")
 local settings_button = gui:WaitForChild("Settings")
-local dmg_counter_button = settings_button:WaitForChild("Buttons")
-    :WaitForChild("DmgCounterButton")
+local dmg_counter_button = settings_button:WaitForChild("Buttons"):WaitForChild("Page1"):WaitForChild("DmgCounterButton")
 local script_enabled = "Скрипт включен успешно."
 local notifier_enabled = "Уведомлятель включен успешно."
 local notifier_disabled = "Уведомлятель выключен успешно."
